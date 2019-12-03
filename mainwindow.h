@@ -7,6 +7,9 @@
 #include <QMessageBox>
 #include <QFileDialog>
 #include <QDataStream>
+#include <QDebug>
+#include <QStringList>
+#include <QList>
 
 namespace Ui {
 class MainWindow;
@@ -30,6 +33,11 @@ private slots:
 private:
     Ui::MainWindow *ui;
     QString read_data;
+    QString converted_data;
+    QList<float> highs;
+    QList<float> latitude;
+    QList<float> longitude;
+
 };
 
 #endif // MAINWINDOW_H
