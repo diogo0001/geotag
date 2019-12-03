@@ -10,6 +10,7 @@
 #include <QDebug>
 #include <QStringList>
 #include <QList>
+#include <QGeoCoordinate>
 
 namespace Ui {
 class MainWindow;
@@ -29,6 +30,7 @@ private slots:
     void on_abrir_arquivo_clicked();
     void on_converter_clicked();
     void on_salvar_clicked();
+    void on_limpar_clicked();
 
 private:
     Ui::MainWindow *ui;
@@ -37,7 +39,6 @@ private:
     QList<float> highs;
     QList<float> latitude;
     QList<float> longitude;
-
 };
 
 #endif // MAINWINDOW_H

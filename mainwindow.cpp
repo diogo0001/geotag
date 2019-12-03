@@ -27,12 +27,19 @@ void MainWindow::on_abrir_arquivo_clicked()
         QMessageBox::warning(this,"ERRO","Erro ao abrir o arquivo");
     }
     QTextStream stream_data(&file);
+
     QString coord_data = "";
     QStringList list;
     float aux,sum = 0;
 
-    //Calcular a altitude média, mínima e máxima do log e mostrar ao usuário
+    if (!latitude.empty()){
+        latitude.clear();
+        longitude.clear();
+        highs.clear();
+    }
 
+    // Obtém os dados do arquvo e os converte para os tipos apropriados
+    // Armazena cada coordenada em sua lista, realiza o somatório para a média
     while(!stream_data.atEnd())
     {
         read_data = stream_data.readLine();
@@ -46,32 +53,35 @@ void MainWindow::on_abrir_arquivo_clicked()
         highs.append(aux);
         sum = sum + aux;
     }
+    file.close();
 
+    //Calcula a altitude média, mínima e máxima do log e mostrar ao usuário
     sum = sum/highs.length();
     std::sort(highs.begin(), highs.end());
-    float max_value = highs.first();
-    float min_value = highs.last();
+    float max_value = highs.last();
+    float min_value = highs.first();
 
-    qDebug()<<"Media: "<<sum;
-    qDebug()<<"Max: "<<max_value;
-    qDebug()<<"Min: "<<min_value;
+    QString str_out = "Número de medições :  "+QString().sprintf("%d",highs.length());
+    str_out += "\n\nAltura média\t:  "+QString().sprintf("%0.3f", sum);
+    str_out +=   "\nAltura máxima\t:  "+QString().sprintf("%0.3f", max_value);
+    str_out +=   "\nAltura mínima\t:  "+QString().sprintf("%0.3f", min_value);
 
-    QString str_out = "Altura média: "+QString().sprintf("%0.3f", sum);
-    str_out += "\nAltura máxima: "+QString().sprintf("%0.3f", max_value);
-    str_out += "\nAltura mínima: "+QString().sprintf("%0.3f", min_value);
-    str_out += "\n\nCoordenadas:\n\n";
-
-    ui->plainTextEdit->setPlainText(str_out+coord_data);
-    file.close();
+    ui->label_2->setText(str_out);
+    ui->plainTextEdit->setPlainText(coord_data);
 }
-
 
 //Realizar a conversão dos dados de latitude e longitude para graus minutos e segundos
 //Os segundos devem ter precisão de 4 casas após a vírgula
 void MainWindow::on_converter_clicked()
 {
+    read_data = "";
 
+    for(int i=0;i<latitude.length();i++){
+        QGeoCoordinate coordinates = QGeoCoordinate(latitude[i], longitude[i]);
+        read_data += coordinates.toString(QGeoCoordinate::DegreesMinutesSeconds)+"\n";
+    }
 
+    ui->plainTextEdit->setPlainText(read_data);
 }
 
 
@@ -85,9 +95,20 @@ void MainWindow::on_salvar_clicked()
         QMessageBox::warning(this,"ERRO","Erro ao abrir o arquivo");
     }
     QDataStream data_out(&file);
-    QString data = "Calculos";
-    data_out << data;
+    data_out << read_data;
     file.flush();
     file.close();
+}
 
+
+void MainWindow::on_limpar_clicked()
+{
+    ui->label_2->setText("");
+    ui->plainTextEdit->setPlainText("");
+
+    if (!latitude.empty()){
+        latitude.clear();
+        longitude.clear();
+        highs.clear();
+    }
 }
