@@ -90,6 +90,7 @@ void MainWindow::on_converter_clicked()
 }
 
 // Retorna uma string com os dados convertidos para graus, minutos, segundos e a altura
+// (Implementação adaptada da classe QGeoCordinate para melhorar a precisão)
 QString MainWindow::convert_to_dms(double lat, double lng, double alt){
 
        QString latStr;
