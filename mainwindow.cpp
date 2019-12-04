@@ -65,7 +65,6 @@ void MainWindow::on_abrir_arquivo_clicked()
         float max_value = h.last();
         float min_value = h.first();
         h.clear();
-        qDebug()<<h.length();
 
         QString statistics = "Número de medições :  "+QString().sprintf("%d",height.length());
         statistics += "\n\nAltura média\t:  "+QString().sprintf("%0.3f", sum);
