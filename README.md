@@ -5,7 +5,7 @@
 ## Aplicação para verificação de coordenadas mapeadas
 
 Aplicação desenvonvida em QT, onde o usuário pode abrir os dados de um arquivo *.txt.  
-São mostrados os valores de maior e menor altura, e também a altura média.
+São mostrados os valores de altura máxima e mínima, e também a altura média.
 
 O usuário pode converter as coordenadas para graus, minutos e segundos, com precisão de 4 casas nos segundos.
 O arquivo pode ser salvo, tanto o convertido quanto o aberto. Também pode ser editado diretamente.
