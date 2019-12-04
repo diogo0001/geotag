@@ -4,11 +4,12 @@
 
 ## Aplicação para verificação de coordenadas mapeadas
 
-Aplicação desenvonvida em QT, onde o usuário pode abrir os dados de um arquivo txt com as coordenadas 
-em latitude, logitude e altura. São mostrados os valores de maior e menor altura, e também a altura média.
+Aplicação desenvonvida em QT, onde o usuário pode abrir os dados de um arquivo *.txt.  
+São mostrados os valores de maior e menor altura, e também a altura média.
 
 O usuário pode converter as coordenadas para graus, minutos e segundos, com precisão de 4 casas nos segundos.
 O arquivo pode ser salvo, tanto o convertido quanto o aberto. Também pode ser editado diretamente.
+Para a conversão os dados devem estar com as coordenadas em latitude, logitude e altura, e ser aberto por arquivo.
 
 ## Features
   
@@ -20,5 +21,10 @@ O arquivo pode ser salvo, tanto o convertido quanto o aberto. Também pode ser e
     
 ## Dependências
 
-  Aplicação desenvolvida no QT Creator 4.2, SDK QT 5.8
+  Aplicação desenvolvida no QT Creator 4.2, SDK QT 5.8.
+  
+## Implementações futuras
+
+O aplicativo pode ser aprimorado, e algumas futuras implementações podem ser a conversão de GMS -> lat/longt, 
+e também a conversão de dados inseridos diretamente na tela. 
 
