@@ -1,4 +1,4 @@
-# Geotag
+# HORUS - Geotag
 
 ![](https://github.com/diogo0001/geotag/blob/master/app_ui.PNG)
 
