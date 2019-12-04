@@ -31,6 +31,7 @@ void MainWindow::on_abrir_arquivo_clicked()
         QTextStream stream_data(&file);
         QString coord_data = "";
         QStringList list;
+        QList<double> h;
         float aux,sum = 0;
 
         if (!latitude.empty()){
@@ -59,9 +60,12 @@ void MainWindow::on_abrir_arquivo_clicked()
 
         //Calcula a altitude média, mínima e máxima do log e mostra ao usuário
         sum = sum/height.length();
-        std::sort(height.begin(), height.end());
-        float max_value = height.last();
-        float min_value = height.first();
+        h = height;
+        std::sort(h.begin(), h.end());
+        float max_value = h.last();
+        float min_value = h.first();
+        h.clear();
+        qDebug()<<h.length();
 
         QString statistics = "Número de medições :  "+QString().sprintf("%d",height.length());
         statistics += "\n\nAltura média\t:  "+QString().sprintf("%0.3f", sum);
