@@ -6,11 +6,9 @@
 #include <QTextStream>
 #include <QMessageBox>
 #include <QFileDialog>
-#include <QDataStream>
 #include <QDebug>
 #include <QStringList>
 #include <QList>
-#include <QGeoCoordinate>
 
 namespace Ui {
 class MainWindow;
@@ -24,7 +22,6 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
-
 private slots:
 
     void on_abrir_arquivo_clicked();
@@ -34,11 +31,11 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-    QString read_data;
-    QString converted_data;
-    QList<float> highs;
-    QList<float> latitude;
-    QList<float> longitude;
+    QList<double> height;
+    QList<double> latitude;
+    QList<double> longitude;
+
+    QString convert_to_dms(double lat, double lng, double alt);
 };
 
 #endif // MAINWINDOW_H
