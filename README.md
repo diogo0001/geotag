@@ -1,4 +1,4 @@
-# HORUS - Geotag
+# Conversor de Coordenadas
 
 ![](https://github.com/diogo0001/geotag/blob/master/app_ui.PNG)
 
